@@ -4,6 +4,9 @@ jobs:
   ci:
     docker:
       - image: 'cimg/node:20.14'
+    environment:
+      PROTO_LOG: trace
+      MOON_LOG: trace
     steps:
       - checkout
       - run: 
@@ -31,12 +34,12 @@ jobs:
       - run:
           name: Moon check 3
           command: |
-            moon run -u check && moon run -u check
+            moon run -u check
+            moon run -u check
       - run:
           name: Moon check 4
           command: |
-            moon run -u check
-            moon run -u check
+            moon run -u check && moon run -u check
       # - run:
       #     name: Moon Test
       #     command: moon ci test

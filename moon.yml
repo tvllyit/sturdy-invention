@@ -1,0 +1,57 @@
+language: typescript
+
+tasks:
+  x:
+    script: tsc -h && echo -e "$PATH\n" && which tsc
+    toolchain: node
+
+  x2:
+    script: |
+      moon run -u x
+      moon run -u x
+      moon run -u x
+  x3:
+    script: |
+      set -e
+      moon run clean
+      moon run check
+      moon run build
+
+  # Linting and formatting (auto fix)
+  fix-check:
+    deps:
+      - fix-check-eslint
+      - check-tsc
+
+  fix-check-eslint:
+    extends: check-eslint
+    args: --fix
+    options:
+      internal: true
+
+  # Linting and formatting (no auto fix)
+  check:
+    deps:
+      - check-eslint
+      - check-tsc
+  check-eslint:
+    command: eslint --cache --report-unused-disable-directives --max-warnings 0 src scripts
+    options:
+      internal: true
+  
+  check-tsc:
+    command: tsc --incremental --noEmit
+    options:
+      internal: true
+
+  # Cleanup
+  clean:
+    script: |
+      set -e
+      moon clean
+      rm -rf ./generated
+      rm -rf ./node_modules
+      rm -rf ./moon/cache
+    options:
+      cache: false
+      runInCI: false

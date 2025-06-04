@@ -28,6 +28,8 @@ jobs:
           name: Moon task info
           command: |
             moon task root:check
+            moon task root:check-eslint
+            moon task root:check-tsc
       - run:
           name: Moon check
           command: |

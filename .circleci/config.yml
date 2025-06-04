@@ -23,20 +23,20 @@ jobs:
       - run:
           name: Moon check
           command: |
-            moon ci check
+            moon run check
       - run:
           name: Moon check 2
           command: |
-            moon ci -u check
+            moon run -u check
       - run:
           name: Moon check 3
           command: |
-            moon ci -u check && moon ci -u check
+            moon run -u check && moon run -u check
       - run:
           name: Moon check 4
           command: |
-            moon ci -u check
-            moon ci -u check
+            moon run -u check
+            moon run -u check
       # - run:
       #     name: Moon Test
       #     command: moon ci test

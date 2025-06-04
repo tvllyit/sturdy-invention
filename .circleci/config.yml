@@ -7,6 +7,7 @@ jobs:
     environment:
       PROTO_LOG: trace
       MOON_LOG: trace
+      MOON_DEBUG_PROCESS_ENV: 1
     steps:
       - checkout
       - run: 
@@ -23,6 +24,10 @@ jobs:
             # # Bug being tracked: https://github.com/moonrepo/proto/issues/791
             # timeout 5s proto i moon 1.37 || proto i moon 1.37
             proto install
+      - run:
+          name: Moon task info
+          command: |
+            moon task check
       - run:
           name: Moon check
           command: |

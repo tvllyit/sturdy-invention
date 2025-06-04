@@ -27,7 +27,7 @@ jobs:
       - run:
           name: Moon task info
           command: |
-            moon task check
+            moon task root:check
       - run:
           name: Moon check
           command: |

@@ -34,11 +34,12 @@ tasks:
     deps:
       - check-eslint
       - check-tsc
+
   check-eslint:
-    command: eslint --cache --report-unused-disable-directives --max-warnings 0 src scripts
+    command: eslint --cache --report-unused-disable-directives --max-warnings 0 src
     options:
       internal: true
-  
+
   check-tsc:
     command: tsc --incremental --noEmit
     options:

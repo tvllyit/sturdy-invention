@@ -2,22 +2,23 @@
 proto = "0.49.4"
 moon = "1.37.0"
 
-bun = "~1.2"
-go = "~1.24"
+# bun = "~1.2"
+# go = "~1.24"
 
-[env]
-DEBUG = "*"
+# [env]
+# DEBUG = "*"
 
 [settings]
 auto-install = true
 auto-clean = true
 
-# do not override installed tools
-detect-strategy = "first-available"
+# # do not override installed tools
+# detect-strategy = "first-available"
 
 # disable in actual codebase
 # please have all my data :)
 telemetry = true
 
-[settings.http]
-allow-invalid-certs = false
+# Off by default no?
+# [settings.http]
+# allow-invalid-certs = false

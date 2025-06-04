@@ -10,10 +10,13 @@ jobs:
           name: Install proto and moon
           command: |
             bash <(curl -fsSL https://moonrepo.dev/install/proto.sh)
+
             export PROTO_HOME="$HOME/.proto";
             export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH";
+
             echo "export PROTO_HOME=\"$PROTO_HOME\"" >> "$BASH_ENV"
             echo "export PATH=\"$PATH\"" >> "$BASH_ENV"
+            
             # # Bug being tracked: https://github.com/moonrepo/proto/issues/791
             # timeout 5s proto i moon 1.37 || proto i moon 1.37
             proto install

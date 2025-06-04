@@ -22,13 +22,27 @@ jobs:
             proto install
       - run:
           name: Moon check
-          command: moon ci check
+          command: |
+            moon ci check
       - run:
-          name: Moon Test
-          command: moon ci test
-      - run: 
-          name: Moon build
-          command: moon ci build
+          name: Moon check 2
+          command: |
+            moon ci -u check
+      - run:
+          name: Moon check 3
+          command: |
+            moon ci -u check && moon ci -u check
+      - run:
+          name: Moon check 4
+          command: |
+            moon ci -u check
+            moon ci -u check
+      # - run:
+      #     name: Moon Test
+      #     command: moon ci test
+      # - run: 
+      #     name: Moon build
+      #     command: moon ci build
 
 workflows:
   pipeline:

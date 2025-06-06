@@ -17,32 +17,10 @@ jobs:
             
             source .moon/.bashrc
             echo "source .moon/.bashrc" >> "$BASH_ENV"
-
-            # export PROTO_HOME="$HOME/.proto";
-            # export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH";
-
-            proto i
-            moon run check-path
-            moon run -u check-path
-
-            # # Note: moon prepends the toolchain path to PATH but,
-            # # that env can only be passed to follow up shells in CI
-            # # via the BASH_ENV variable.
-            # export PATH=$PWD/node_modules/.bin:$PATH
-
-            # echo "Path: $PATH"
-
-            # echo "export PROTO_HOME=\"$PROTO_HOME\"" >> "$BASH_ENV"
-            # echo "export PATH=\"$PATH\"" >> "$BASH_ENV"
-
-            # echo 'export PROTO_HOME="$HOME/.proto"' >> "$BASH_ENV"
-            # echo 'export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"' >> "$BASH_ENV"
-
-            moon run -u check-path
             
             # # # Bug being tracked: https://github.com/moonrepo/proto/issues/791
             # # timeout 5s proto i moon 1.37 || proto i moon 1.37
-            # proto install
+            proto install
       - run:
           name: Moon task info
           command: |

@@ -20,6 +20,7 @@ jobs:
 
             proto i
             moon run check-path
+            moon run -u check-path
 
             # # Note: moon prepends the toolchain path to PATH but,
             # # that env can only be passed to follow up shells in CI
@@ -31,7 +32,7 @@ jobs:
             echo "export PROTO_HOME=\"$PROTO_HOME\"" >> "$BASH_ENV"
             echo "export PATH=\"$PATH\"" >> "$BASH_ENV"
 
-            moon run check-path
+            moon run -u check-path
             
             # # # Bug being tracked: https://github.com/moonrepo/proto/issues/791
             # # timeout 5s proto i moon 1.37 || proto i moon 1.37

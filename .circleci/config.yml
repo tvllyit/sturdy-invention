@@ -4,10 +4,10 @@ jobs:
   ci:
     docker:
       - image: 'cimg/node:20.14'
-    environment:
-      PROTO_LOG: trace
-      MOON_LOG: trace
-      MOON_DEBUG_PROCESS_ENV: 1
+    # environment:
+    #   PROTO_LOG: trace
+    #   MOON_LOG: trace
+    #   MOON_DEBUG_PROCESS_ENV: 1
     steps:
       - checkout
       - run: 
@@ -18,19 +18,24 @@ jobs:
             export PROTO_HOME="$HOME/.proto";
             export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH";
 
-            # Note: moon prepends the toolchain path to PATH but,
-            # that env can only be passed to follow up shells in CI
-            # via the BASH_ENV variable.
-            export PATH=$PWD/node_modules/.bin:$PATH
+            proto i
+            moon run check-path
 
-            echo "Path: $PATH"
+            # # Note: moon prepends the toolchain path to PATH but,
+            # # that env can only be passed to follow up shells in CI
+            # # via the BASH_ENV variable.
+            # export PATH=$PWD/node_modules/.bin:$PATH
+
+            # echo "Path: $PATH"
 
             echo "export PROTO_HOME=\"$PROTO_HOME\"" >> "$BASH_ENV"
             echo "export PATH=\"$PATH\"" >> "$BASH_ENV"
+
+            moon run check-path
             
-            # # Bug being tracked: https://github.com/moonrepo/proto/issues/791
-            # timeout 5s proto i moon 1.37 || proto i moon 1.37
-            proto install
+            # # # Bug being tracked: https://github.com/moonrepo/proto/issues/791
+            # # timeout 5s proto i moon 1.37 || proto i moon 1.37
+            # proto install
       - run:
           name: Moon task info
           command: |

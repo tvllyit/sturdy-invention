@@ -1,6 +1,10 @@
 language: typescript
 
 tasks:
+  check-path:
+    script: echo "Path $PATH"
+    toolchain: node
+
   x:
     script: tsc -h && echo -e "$PATH\n" && which tsc
     toolchain: node

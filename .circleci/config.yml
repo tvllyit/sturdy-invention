@@ -29,8 +29,11 @@ jobs:
 
             # echo "Path: $PATH"
 
-            echo "export PROTO_HOME=\"$PROTO_HOME\"" >> "$BASH_ENV"
-            echo "export PATH=\"$PATH\"" >> "$BASH_ENV"
+            # echo "export PROTO_HOME=\"$PROTO_HOME\"" >> "$BASH_ENV"
+            # echo "export PATH=\"$PATH\"" >> "$BASH_ENV"
+
+            echo 'export PROTO_HOME="$HOME/.proto"' >> "$BASH_ENV"
+            echo 'export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"' >> "$BASH_ENV"
 
             moon run -u check-path
             
